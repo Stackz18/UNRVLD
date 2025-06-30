@@ -4,8 +4,12 @@ header {
     color: #fff;
 
     h1 {
-        font-size: 80px;
+        font-size: 40px;
         margin: 20px 0 40px;
+
+        @media (min-width: 992px) {
+            font-size: 80px;
+        }
     }
 
     .justify-right {
