@@ -1,5 +1,9 @@
 body {
   margin: 0;
-  font-family: "IBM Plex Sans", sans-serif;;
+  font-family: "IBM Plex Sans", sans-serif;
+
+  * {
+    box-sizing: border-box;
+  }
 }
 

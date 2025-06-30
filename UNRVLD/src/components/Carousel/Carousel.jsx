@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "./Carousel.scss"
 
 const slides = [
     {
@@ -15,47 +16,58 @@ const slides = [
         img: '/src/assets/img/Carousel-3.png',
         heading: 'Bottoms',
         price: 'From £30.00',
+    },
+    {
+        img: '/src/assets/img/Carousel-1.png',
+        heading: 'Headwear',
+        price: 'From £24.00',
     }
 ];
 
 export default function Carousel() {
-    const [startIndex] = useState(0);
+    const [startIndex, setStartIndex] = useState(0);
     const visibleCount = 3;
+    const maxStart = slides.length - visibleCount;
+    const [activeIndex, setActiveIndex] = useState(1);
 
     return (
-        <div className='slider' style={{ width: '90%', margin: 'auto', position: 'relative' }}>
-            <div
-                style={{
-                    display: 'flex',
-                    overflow: 'hidden',
-                }}
-            >
+        <div className='slider'>
+            <div className='slider-container'>
                 <div className='slide-track'
                     style={{
-                        display: 'flex',
                         transform: `translateX(-${(startIndex * 100) / visibleCount}%)`,
                         width: `${(slides.length * 100) / visibleCount}%`,
                     }}
                 >
                     {slides.map(({ img, heading, price }, id) => (
-                        <div className='slide' id={id + 1}
+                        <div id={id + 1}
                             key={id}
+                            className={`slide ${id === activeIndex ? 'active' : ''}`}
                             style={{
-                                flex: `0 0 ${100 / slides.length}%`,
-                                position: 'relative',
-                                height: '600px',
                                 backgroundImage: `url(${img})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                color: '#000',
-                                padding: '10px',
                             }}
                         >
-                            <div className='heading'>{heading}</div>
-                            <div className='price'>{price}</div>
+                            <div className='slide-text'>
+                                <div className='heading'>{heading}</div>
+                                <div className='price'>{price}</div>
+                            </div>
                         </div>
                     ))}
                 </div>
+            </div>
+
+            {/* Dots */}
+            <div className="carousel-dots">
+                {Array.from({ length: maxStart + 1 }).map((_, idx) => (
+                    <span
+                        key={idx}
+                        onClick={() => {
+                            setStartIndex(idx);
+                            setActiveIndex(idx + 1);
+                        }}
+                        className={`dot ${idx === startIndex ? 'active' : ''}`}
+                    />
+                ))}
             </div>
         </div>
     );
