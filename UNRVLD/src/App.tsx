@@ -1,5 +1,6 @@
 import Header from "./components/Header/Header.jsx"
 import './assets/scss/grid-layout.scss'
+import './assets/scss/fonts.scss'
 import './App.scss'
 
 function App() {
