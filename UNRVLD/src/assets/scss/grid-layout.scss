@@ -1,0 +1,63 @@
+// Variables for gutter and container max-widths
+$gutter-x: 0.75rem;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+// Container styles
+.container {
+  width: 100%;
+  padding-right: $gutter-x;
+  padding-left: $gutter-x;
+  margin-right: auto;
+  margin-left: auto;
+
+  @each $breakpoint, $max-width in $container-max-widths {
+    @media (min-width: map-get($container-max-widths, $breakpoint)) {
+      max-width: $max-width;
+    }
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: $gutter-x;
+  padding-left: $gutter-x;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Row styles
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * #{$gutter-x});
+  margin-left: calc(-1 * #{$gutter-x});
+}
+
+// Columns base styles
+[class^="col-"],
+[class*=" col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: $gutter-x;
+  padding-left: $gutter-x;
+}
+
+.col {
+  flex: 1 0 0%;
+}
+
+// Fixed-width columns (col-1 to col-12)
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 auto;
+    width: (100% / 12) * $i;
+    padding: 0;
+  }
+}

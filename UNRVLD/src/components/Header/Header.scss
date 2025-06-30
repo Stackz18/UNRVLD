@@ -1,0 +1,22 @@
+header {
+    background: #000000;
+    padding: 30px 50px;
+    color: #fff;
+
+    h1 {
+        font-size: 80px;
+    }
+
+    .justify-right {
+        display: flex;
+        justify-content: flex-end;
+        margin: auto;
+
+        img {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+
+}
