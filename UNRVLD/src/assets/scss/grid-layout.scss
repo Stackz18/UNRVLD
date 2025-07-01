@@ -1,5 +1,6 @@
 @use "./variables" as *;
 @use "./_mixins.scss" as *;
+@use "sass:map";
 
 $gutter-x: 0.75rem;
 
@@ -20,7 +21,7 @@ $container-max-widths: (
   margin-left: auto;
 
   @each $breakpoint, $max-width in $container-max-widths {
-    @media (min-width: map-get($container-max-widths, $breakpoint)) {
+    @media (min-width: map.get($container-max-widths, $breakpoint)) {
       max-width: $max-width;
     }
   }
