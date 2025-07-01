@@ -1,4 +1,4 @@
-@import "./assets/scss/mixins.scss";
+@use "./assets/scss/mixins.scss" as *;
 body {
   margin: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -18,7 +18,7 @@ h4,
 
 h2 {
   font-size: 32px;
-  margin-top: 10px;
+  margin: 10px 0 30px;
   line-height: 1;
 
   @include respond(lg) {
@@ -50,4 +50,10 @@ h2 {
 
     color: #000;
   }
+}
+
+.text-center {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
 }

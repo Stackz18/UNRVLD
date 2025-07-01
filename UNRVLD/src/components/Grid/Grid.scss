@@ -1,6 +1,18 @@
+@use "../../assets/scss/mixins.scss" as *;
+
 .product-grid {
     .row {
         margin: 0;
+
+        .col-12 {
+            &.extra-padding {
+                padding: 15px;
+
+                @include respond(lg) {
+                    padding: 0 50px;
+                }
+            }
+        }
 
         .col-lg-3 {
             border: 1px solid #ebebeb;
@@ -34,4 +46,25 @@
             }
         }
     }
+    .btn {
+        margin-top: 20px;
+    }
+
+    .form-select {
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.25rem; 
+        border: 1px solid #ebebeb;
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+        background-color: #fff;
+        color: #767676;
+
+        &:focus {
+            border-color: #767676;
+            box-shadow: 0 0 0 0.2rem rgba(73, 80, 87, 0.25);
+            outline: none;
+        }
+    }
+    
 }

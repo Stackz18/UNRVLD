@@ -1,4 +1,5 @@
-@import "./_mixins.scss";
+@use "./variables" as *;
+@use "./_mixins.scss" as *;
 
 $gutter-x: 0.75rem;
 
@@ -68,7 +69,7 @@ $container-max-widths: (
     @for $i from 1 through 12 {
       .col-#{$breakpoint}-#{$i} {
         flex: 0 0 auto;
-        width: (100% / 12) * $i;
+        width: calc(100% / 12) * $i;
       }
     }
 
