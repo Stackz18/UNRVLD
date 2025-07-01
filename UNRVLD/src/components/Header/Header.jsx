@@ -1,7 +1,7 @@
 
 import logo from "../../assets/img/Logo.png"
 import arrow from "../../assets/img/Arrow.png"
-import 'header.scss'
+import './header.scss'
 
 const Header = ({ children }) => {
     return (
