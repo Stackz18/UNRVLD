@@ -42,20 +42,16 @@ export default function Carousel() {
         ? startIndex * 64 / visibleCount
         : (startIndex * 100) / visibleCount;
 
-    const flexWidth = isMobile
-        ? 100 / visibleCount
-        : 100 / 2;
-
     return (
         <section className='carousel'>
             <div className='row'>
                 <div className='col-12 col-lg-6'>
-                    <span className='subheading'>Spring Summer 25</span>
+                    <span className='subheading'>// Spring Summer 25</span>
                     <h2>Shake up your summer look</h2>
                 </div>
                 
                 <div className='col-12 col-lg-6 justify-right-desktop'>
-                    <a href="#grid">Shop the collection</a>
+                    <a href="#grid" className='btn'>Shop the collection</a>
                 </div>
             </div>
 

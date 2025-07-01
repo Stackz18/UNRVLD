@@ -7,6 +7,11 @@
     padding: 50px;
   }
   .slider {
+    margin-top: 50px;
+    @include respond(lg) {
+      margin-top: 0px;
+    }
+
     .slider-container {
       display: flex;
       overflow: hidden;
