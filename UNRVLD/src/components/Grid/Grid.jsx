@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GraphQLClient, gql } from "graphql-request";
+import "./Grid.scss"
 
 const endpoint = "https://mock.shop/api";
 const graphQLClient = new GraphQLClient(endpoint);
