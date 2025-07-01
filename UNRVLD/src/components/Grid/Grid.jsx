@@ -11,6 +11,7 @@ const GET_PRODUCTS = gql`
         node {
           id
           title
+          description
           handle
           images(first: 1) {
             edges {
@@ -62,19 +63,38 @@ export default function ProductGrid() {
     return (
         <section className="product-grid">
             <div className="row">
-                <div className="col-12 col-md-6 col-lg-3">
-                    <a>
-                        <div className="card">
-                            <img />
-                            <div className="card-body">#
-                                <h4>Title</h4>
-                                <p>Description</p>
-                                <p>Price</p>
-                            </div>
+                {products.map(({ node: product }) => {
+                    const image = product.images.edges[0]?.node;
+                    const variant = product.variants.edges[0]?.node;
+                    const price = variant?.price;
+
+                    return (
+                        <div key={product.id} className="col-12 col-md-6 col-lg-3">
+                            <a href={product.url}>
+                                <div className="card">
+                                    {image?.url && (
+                                        <img
+                                            src={image.url}
+                                            alt={image.altText || product.title}
+                                            className="card-img"
+                                            style={{ objectFit: "cover", height: "300px", width: "100%" }}
+                                        />
+                                    )}
+                                    <div className="card-body">
+                                        <h4>{product.title}</h4>
+                                        <p>{product.description || "No description available."}</p>
+                                        <p>£{parseFloat(price.amount).toFixed(2)}</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
+                    )
+                })};
+
+
+
+
             </div>
-   </section> 
-  );
+        </section>
+    );
 }
