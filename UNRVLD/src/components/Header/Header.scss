@@ -1,8 +1,12 @@
 @import "../../assets/scss/_mixins.scss";
 header {
     background: #000000;
-    padding: 30px 50px;
+    padding: 30px 15px;
     color: #fff;
+
+    @include respond(lg) {
+        padding: 30px 50px;
+    }
 
     h1 {
         font-size: 40px;
@@ -23,6 +27,4 @@ header {
             height: 80px;
         }
     }
-
-
 }
