@@ -1,3 +1,4 @@
+@import "./assets/scss/mixins.scss";
 body {
   margin: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -8,3 +9,17 @@ body {
   }
 }
 
+h2,
+h3,
+h4,
+.sub-heading {
+  text-transform: uppercase;
+}
+
+.justify-right-desktop {
+  @include respond(lg) {
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+  }
+}

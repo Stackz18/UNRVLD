@@ -1,6 +1,5 @@
 import Header from "./components/Header/Header.jsx"
 import Carousel from "./components/Carousel/Carousel.jsx"
-import SectionHeading from "./components/SectionHeading/SectionHeading.jsx"
 import './assets/scss/grid-layout.scss'
 import './assets/scss/fonts.scss'
 import './App.scss'

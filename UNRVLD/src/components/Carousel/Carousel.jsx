@@ -54,7 +54,7 @@ export default function Carousel() {
                     <h2>Shake up your summer look</h2>
                 </div>
                 
-                <div className='col-12 col-lg-6'>
+                <div className='col-12 col-lg-6 justify-right-desktop'>
                     <a href="#grid">Shop the collection</a>
                 </div>
             </div>
