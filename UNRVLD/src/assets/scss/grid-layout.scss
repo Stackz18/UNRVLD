@@ -9,6 +9,14 @@ $container-max-widths: (
   xxl: 1320px
 );
 
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
 // Container styles
 .container {
   width: 100%;
@@ -40,7 +48,7 @@ $container-max-widths: (
   margin-left: calc(-1 * #{$gutter-x});
 }
 
-// Columns base styles
+// Column base styles
 [class^="col-"],
 [class*=" col-"] {
   position: relative;
@@ -53,11 +61,27 @@ $container-max-widths: (
   flex: 1 0 0%;
 }
 
-// Fixed-width columns (col-1 to col-12)
+// Fixed-width columns
 @for $i from 1 through 12 {
   .col-#{$i} {
     flex: 0 0 auto;
     width: (100% / 12) * $i;
-    padding: 0;
+  }
+}
+
+// Responsive columns: .col-sm-1 to .col-xxl-12
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @for $i from 1 through 12 {
+      .col-#{$breakpoint}-#{$i} {
+        flex: 0 0 auto;
+        width: (100% / 12) * $i;
+      }
+    }
+
+    // .col-{breakpoint} (auto width/flex)
+    .col-#{$breakpoint} {
+      flex: 1 0 0%;
+    }
   }
 }
