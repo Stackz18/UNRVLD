@@ -25,6 +25,10 @@ const GET_PRODUCTS = gql`
           variants(first: 1) {
             edges {
               node {
+                selectedOptions {
+                  name
+                  value
+                }
                 price {
                   amount
                   currencyCode
@@ -68,6 +72,9 @@ export default function ProductGrid() {
                     const image = product.images.edges[0]?.node;
                     const variant = product.variants.edges[0]?.node;
                     const price = variant?.price;
+                    const colorOption = variant?.selectedOptions.find(opt =>
+                        opt.name.toLowerCase() === "color"
+                    );
 
                     return (
                         <div key={product.id} className="col-12 col-md-6 col-lg-3">
@@ -82,9 +89,10 @@ export default function ProductGrid() {
                                         />
                                     )}
                                     <div className="card-body">
-                                        <h4>{product.title}</h4>
-                                        <p>{product.description || "No description available."}</p>
-                                        <p>£{parseFloat(price.amount).toFixed(2)}</p>
+                                        <h4 className="card-title">{product.title}</h4>
+                                        <p className="card-description">{product.description || "No description available."}</p>
+                                        <p className="card-color">{colorOption ? `${colorOption.value}` : ""}</p>
+                                        <p className="card-price">£{parseFloat(price.amount).toFixed(2)}</p>
                                     </div>
                                 </div>
                             </a>

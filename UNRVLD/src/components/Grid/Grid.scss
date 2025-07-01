@@ -3,16 +3,32 @@
         margin: 0;
 
         .col-lg-3 {
-            border: 1px solid #EBEBEB;
+            border: 1px solid #ebebeb;
             padding: 0;
 
             a {
                 text-decoration: none;
                 color: #000;
-                
+
                 .card {
                     .card-body {
                         padding: 10px 50px;
+
+                        h4 {
+                            font-size: 14px;
+                            margin-bottom: 0;
+                        }
+
+                        p {
+                            margin: 5px 0;
+
+                            &.card-color {
+                                color: #767676;
+                            }
+                            &.card-price {
+                                font-size: 14px;
+                            }
+                        }
                     }
                 }
             }
