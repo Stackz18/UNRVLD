@@ -70,7 +70,7 @@ export default function ProductGrid() {
 
                     return (
                         <div key={product.id} className="col-12 col-md-6 col-lg-3">
-                            <a href={product.url}>
+                            <a href={product.handle}>
                                 <div className="card">
                                     {image?.url && (
                                         <img
