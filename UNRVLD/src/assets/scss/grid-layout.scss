@@ -1,4 +1,4 @@
-@import "./mixins.scss";
+@import "./_mixins.scss";
 
 $gutter-x: 0.75rem;
 
@@ -58,7 +58,7 @@ $container-max-widths: (
 @for $i from 1 through 12 {
   .col-#{$i} {
     flex: 0 0 auto;
-    width: (100% / 12) * $i;
+    width: calc(100% / 12) * $i;
   }
 }
 
