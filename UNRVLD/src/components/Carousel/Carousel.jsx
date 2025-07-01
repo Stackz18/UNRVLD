@@ -25,12 +25,12 @@ const slides = [
 ];
 
 export default function Carousel() {
-  const [startIndex, setStartIndex] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(1);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [startIndex, setStartIndex] = useState(0); 
+  const [activeIndex, setActiveIndex] = useState(window.innerWidth < 992 ? 0 : 1); 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
 
   useEffect(() => {
-    const update = () => setIsMobile(window.innerWidth < 768);
+    const update = () => setIsMobile(window.innerWidth < 992);
     update();
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
@@ -38,13 +38,13 @@ export default function Carousel() {
 
   const visibleCount = isMobile ? 1 : 3;
   const maxStart = slides.length - visibleCount;
-
-  // Calculate transform percent:
-  // - On mobile, translate by 60% per slide
-  // - Otherwise, normal calculation
-  const transformPercent = isMobile 
-    ? startIndex * 60 
+  const transformPercent = isMobile
+    ? startIndex * 64 / visibleCount
     : (startIndex * 100) / visibleCount;
+
+    const flexWidth = isMobile
+    ? 100 / visibleCount
+    : 100 / 2 ;
 
   return (
     <div className='slider'>
@@ -53,7 +53,7 @@ export default function Carousel() {
           className='slide-track'
           style={{
             transform: `translateX(-${transformPercent}%)`,
-            width: `${(slides.length * 100) / visibleCount}%`,
+            width: `${(slides.length * 100) / 3}%`,
           }}
         >
           {slides.map(({ img, heading, price }, id) => (
@@ -62,6 +62,7 @@ export default function Carousel() {
               className={`slide ${id === activeIndex ? 'active' : ''}`}
               style={{
                 backgroundImage: `url(${img})`,
+                flex: `0 0 flexWidth`,
               }}
             >
               <div className='slide-text'>
