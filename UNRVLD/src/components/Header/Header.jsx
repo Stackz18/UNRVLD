@@ -1,6 +1,6 @@
 
-import logo from "src/assets/img/Logo.png"
-import arrow from "src/assets/img/arrow.png"
+import logo from "/src/assets/img/Logo.png"
+import arrow from "/src/assets/img/arrow.png"
 import './header.scss'
 
 const Header = ({ children }) => {
